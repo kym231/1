@@ -1,6 +1,16 @@
 판다스 사용법
 columns 속성을 사용하여 열 이름을 한꺼번에 생성 및 변경 가능
 
+import pandas as pd
+
+sr=pd.Series([1,2,3,4,5])
+sr
+->    0
+   0  1
+   1  2
+   2  3
+   3  4
+   4  5
 
 #컬럼이름 수정
 df.columns=['no',player
