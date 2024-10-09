@@ -1,16 +1,107 @@
 판다스 사용법
-columns 속성을 사용하여 열 이름을 한꺼번에 생성 및 변경 가능
 
 import pandas as pd
 
-sr=pd.Series([1,2,3,4,5])
-sr
-->    0
-   0  1
-   1  2
-   2  3
-   3  4
-   4  5
+df=pd.DataFrame([1,2,3,4,5])
+df
+->     0
+    0  1
+    1  2
+    2  3
+    3  4
+    4  5
 
+#열추가 
+df['player']=['sonny', 'lee', 'kim', 'hwang', 'park']
+df
+->      0   player  
+    0   1   sonny   
+    1   2   lee     
+    2   3   kim
+    3   4   hwang
+    4   5   park
+
+columns 속성을 사용하여 열 이름을 한꺼번에 생성 및 변경 가능
 #컬럼이름 수정
-df.columns=['no',player
+df.columns=['no', 'player']
+df
+->     no  player  
+    0   1   sonny   
+    1   2   lee     
+    2   3   kim
+    3   4   hwang
+    4   5   park
+
+values 속성을 사용하여 값을 확인
+df. values
+->array([[1, 'sonny'],
+         [2, 'lee'],
+         [3, 'kim'],
+         [4, 'hwang'],
+         [5, 'park']], dtype=object)
+
+2차원 리스트를 데이터프레임으로 변환하기
+2차원 리스트 형태로 score 변수에 할당하고 print 함수로 type를 출력하면 list로 표시
+list= [ [7,'sonny'],
+       [10, 'lee' ],
+        [3,'kim' ]     ]
+list
+-> [[7, 'sonny'], [10, 'lee'], [3, 'kim']]
+
+score 리스트를 데이터프레임으로 변환하여 score_df 변수에 할당하여 저장
+-데이터프레임 맨 앞줄은 0번부터 시작하는 행 인덱스
+-맨 윗줄이 열 이름이고 나머지가 실제 데이터 값
+dict={
+    'name':['sonny','kangin','minjea','channy'],
+    'no':[7,9,3,10 ],
+    'age':[32,23,28,28 ]}
+dict
+->{'name': ['sonny', 'kangin', 'minjea', 'channy'],
+ 'no': [7, 9, 3, 10],
+ 'age': [32, 23, 28, 28]}
+
+df.pd.DataFrame(dict)
+df
+->     name    no  age
+    0  sonny   7   32
+    1  kangin  9   23
+    2  mijhea  3   28
+    3  channy  10  28
+
+df.shape
+-> (4,3)
+
+#데이터 프레임 처음 5행만 출력
+df.head()
+#데이터 프레임 끝 5행만 출력
+df.tail()
+#데이터 속성 확인
+df.info()
+
+열 추가
+df['weight']=[75,60,80,80]
+df
+->     name    no  age  weight
+    0  sonny   7   32    75
+    1  kangin  9   23    60
+    2  mijhea  3   28    80
+    3  channy  10  28    80
+
+특정열만 선택해서 출력
+df['name']
+->     name    
+    0  sonny   
+    1  kangin  
+    2  mijhea  
+    3  channy
+dtype:object
+
+특정행만 선택해서 출력
+(loc속성을 이용해서 [인덱스 명] 와 결합해서 사용
+df.loc[1]
+->          1
+    name  kangin
+     no     9
+     age    23
+    weight  60
+dtype:object
