@@ -1,0 +1,31 @@
+p_value 값이 유의수준보다 작으면 귀무가설을 기각한다
+
+import numpy as np
+import pandas as pd
+from scipy.stats import ttest_1samp
+
+# H0 : 모집단 평균이 200이다
+# H1 : 모집단 평균이 200이 아니다
+# 표본평균 = 202, 표본 표준편차 = 5, 샘플사이즈 = 30, 유의수준 0.05
+
+pop_mean = 200
+sam_mean = 202
+sam_std = 5
+sam_ size = 30
+alpha = 0.05
+
+np.random.seed(40) (p_value 값 통일)
+#가상의 데이터 랜덤으로 생성
+sam_data = np.random.normal(loc=sam_mean, scale=sam_std, size=sam_size)
+
+#ttest
+t_value, p_value = ttest_1samp(sam_data, pop_mean)
+
+print("t_value:", t_value)
+print("p_value:",p_value)
+->
+t_value: 3.408365927718147
+p_value: 0.0019377839311740036
+
+p_value 값이 유의수준 0.05 보다 작으므로 귀무가설 H0을 기각한다
+
